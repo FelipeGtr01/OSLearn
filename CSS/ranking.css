@@ -1,0 +1,162 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #5E42A6;
+}
+
+h2{
+    color: #FFFFFF;
+}
+
+div#tabelaUsuarios{
+    margin-top: 30px;
+    width: 100%;
+    background-color: rgba(216, 216, 216, 0.2); /* Adicionando transparência com o valor 0.7 (70%) */
+}
+
+div#tabelaUsuarios table{
+    /*width: 100%;*/
+    border-top: 1px solid #d8d8d8;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+}
+
+div#tabelaUsuarios table thead td{
+    text-transform: uppercase;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+div#tabelaUsuarios table thead td:first-child{
+    text-align: left;
+}
+
+div#tabelaUsuarios table tbody td:nth-child(even){
+    border-left: 1px solid #d8d8d8;
+    border-right: 1px solid #d8d8d8;
+}
+
+div#tabelaUsuarios table tbody tr{
+    transition: .3s;
+    cursor: pointer;
+}
+
+div#tabelaUsuarios table tbody tr:hover{
+    background: #5E42A6;
+}
+
+div#tabelaUsuarios table tbody tr:nth-child(even){
+    background-color: #ececec;
+}
+
+div#tabelaUsuarios table tbody td{
+    padding: 10px;
+    color: #333;
+    text-align: center;
+}
+
+div#tabelaUsuarios table tbody td:first-child{
+    text-align: left;
+}
+
+div#tabelaUsuarios table tbody td button#editar{
+    margin: 0 10px; /* Espaçamento entre os botões */
+    padding: 8px 12px;
+    text-decoration: none;
+    background-color: #ffe600; /* Cor de fundo dos botões */
+    color: #fff; /* Cor do texto dos botões */
+    /*border: none;*/
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+div#tabelaUsuarios table tbody td button#editar:hover{
+    background-color: #afafaf;
+}
+
+div#tabelaUsuarios table tbody tr:hover td button#editar{
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+}
+
+div#tabelaUsuarios table tbody td button#excluir{
+    margin: 0 10px; /* Espaçamento entre os botões */
+    padding: 8px 12px;
+    text-decoration: none;
+    background-color: #ff0000; /* Cor de fundo dos botões */
+    color: #fff; /* Cor do texto dos botões */
+    /*border: none;*/
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+div#tabelaUsuarios table tbody td button#excluir:hover{
+    background-color: #afafaf;
+}
+
+div#tabelaUsuarios table tbody tr:hover td button#excluir{
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+}
+
+
+/* Estilo da tabela 
+table {
+    width: 80%;
+    margin: 0 auto; Centraliza a tabela 
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+*/
+
+/* Estilo dos botões e cabeçalho */
+.header {
+    display: flex;
+    justify-content: space-between; /* Distribui os itens horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    margin-top: 20px;
+}
+
+.button {
+    margin-top: 10px;
+}
+
+.logout-button {
+    margin-top: 10px;
+}
+
+/* Estilo dos botões e cabeçalho */
+.header {
+    text-align: center;
+    margin-top: 20px;
+    position: relative; /* Adicione esta linha para posicionar os botões relativos ao cabeçalho */
+}
+
+.menu-button {
+    display: inline-block; /* Torna os botões elementos em linha para alinhá-los horizontalmente */
+    margin: 0 10px; /* Espaçamento entre os botões */
+    padding: 8px 12px;
+    text-decoration: none;
+    background-color: #007bff; /* Cor de fundo dos botões */
+    color: #fff; /* Cor do texto dos botões */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Efeito de transição suave para a cor de fundo */
+}
+
+.menu-button:hover {
+    background-color: #0056b3; /* Cor de fundo ao passar o mouse sobre os botões */
+}

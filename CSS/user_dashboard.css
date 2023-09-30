@@ -1,0 +1,100 @@
+/* Estilização dos links */
+a:-webkit-any-link {
+    outline: none;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+/* Estilização para a página de usuário */
+body {
+    font-family: Baskervville;
+    margin: 0;
+    padding: 0;
+    background-color: #5E42A6;
+    color: #FFFFFF;
+}
+
+/* Estilização para o menu */
+#menu {
+    width: 210px;
+    height: 100%;
+    background-color: #312450; /* Cor de fundo do menu */
+    color: #FFFFFF; /* Cor do texto do menu */
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#menu ul {
+    height: 100%;
+    list-style-type: none;
+    padding: 0;
+    text-align: right;
+    margin-top: 100%;
+    margin-right: 10px;
+}
+
+#menu li {
+    padding: 10px;
+    border-bottom: 1px solid #FFF;
+    margin-left: 10px;
+}
+
+/* Estilização para o conteúdo */
+#conteudo {
+    margin-left: 200px;
+    padding: 20px;
+    color: #FFFFFF; /* Cor do texto da página de conteúdo */
+}
+
+#conteudo h1,
+#conteudo p {
+    text-align: center; /* Centralizar o título e o parágrafo */
+    margin: 0 auto;
+    max-width: 800px; /* Defina a largura máxima desejada */
+}
+
+/* Estilo para a div que contém os itens */
+#itens-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh; /* Defina a altura desejada para a área central */
+}
+
+#sair {
+    color: #5E42A6;
+}
+
+/* Estilização para a div de boas-vindas */
+#boas-vindas {
+    width: 90%;
+    height: 495px;
+    border-radius: 25px;
+    background: linear-gradient(334deg, rgba(255, 255, 255, 0.31) -14.65%, rgba(255, 255, 255, 0.31) -14.65%, rgba(255, 255, 255, 0.31) -14.64%, rgba(255, 255, 255, 0.00) 103.2%), linear-gradient(149deg, rgba(255, 232, 191, 0.40) -4.75%, rgba(255, 232, 191, 0.00) 119.61%);
+    margin: 5% 4%; /* Centraliza verticalmente e mantém 20% de margem superior e inferior */
+    padding: 20px;
+    box-shadow: 7px 7px 28px 0px rgba(0, 0, 0, 0.18); /* Box shadow */
+    backdrop-filter: blur(4px); /* Efeito de desfoque */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Estilização para o conteúdo dentro da div de boas-vindas */
+#boas-vindas h1,
+#boas-vindas p {
+    color: #FFFFFF; /* Cor do texto dentro do quadrado */
+    margin-bottom: 10px;
+}
+
+#boas-vindas h1{
+    color: #FFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Baskervville;
+    font-size: 55px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+

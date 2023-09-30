@@ -1,0 +1,162 @@
+/* Estilização dos links */
+a:-webkit-any-link {
+    outline: none;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+/* Estilização para a página de usuário */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #B74E91;
+    color: #FFFFFF;
+}
+
+/* Estilização para o menu */
+#menu {
+    width: 210px;
+    height: 100%;
+    background-color: #312450; /* Cor de fundo do menu */
+    color: #FFFFFF; /* Cor do texto do menu */
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#menu ul {
+    height: 100%;
+    list-style-type: none;
+    padding: 0;
+    text-align: right;
+    margin-top: 100%;
+    margin-right: 10px;
+}
+
+#menu li {
+    padding: 10px;
+    border-bottom: 1px solid #FFF;
+    margin-left: 10px;
+}
+
+/* Estilização para o conteúdo */
+#conteudo {
+    margin-left: 200px;
+    padding: 20px;
+    color: #FFFFFF; /* Cor do texto da página de conteúdo */
+}
+
+#conteudo h1,
+#conteudo p {
+    padding: 1%;
+    margin-left: 2%;
+    text-align: left; /* Centralizar o título e o parágrafo */
+    /*margin: 0 auto;
+    max-width: 800px; /* Defina a largura máxima desejada */
+}
+
+/* Estilo para a div que contém os itens */
+#itens-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh; /* Defina a altura desejada para a área central */
+}
+
+#sair {
+    color: #5E42A6;
+}
+
+
+table {
+    width: 97%;
+    border-collapse: collapse;
+    margin-left: 20px;
+}
+
+th, td {
+    border: 1px solid #FFF;
+    background: rgba(217, 217, 217, 0.30);
+    padding: 10px;
+    text-align: left;
+    transition: background-color 0.3s; /* Adiciona uma transição suave */
+}
+
+/* Adicione esta parte para a mudança de cor no hover */
+td:hover {
+    background-color: #B74E91; /* Cor de fundo quando o mouse passa por cima */
+    color: #FFFFFF; /* Cor do texto ao passar o mouse */
+    cursor: pointer;
+}
+
+.comment {
+    display: flex;
+    align-items: center;
+}
+
+.user-icon {
+    width: 30px;
+    height: 30px;
+    background-color: #333;
+    color: #FFF;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.user-info h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+.user-info p {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+}
+
+/* Estilização para o container do campo de entrada e do botão */
+#enviarComentarioContainer {
+    background-color: #B74E91;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+/* Estilização para a div que contém o formulário */
+#comentarioFormContainer {
+    flex: 1;
+    margin-left: 10px;
+}
+
+/* Estilização para o campo de entrada de comentários */
+#comentarioInput textarea[name="mensagem"] {
+    border: 1px solid #FFF;
+    background: rgba(217, 217, 217, 0.50);
+    width: 95%;
+    max-width: 100%;
+    resize: vertical;
+}
+
+/* Estilização para o botão de envio de comentários */
+#enviarButton input[type="submit"][name="enviarComentario"] {
+    border-radius: 20px;
+    background: #100458;
+    color: #FFF;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    width: 300px;
+}
+
+/* Estilização para o botão de envio de comentários no hover (quando o mouse passa sobre ele) */
+#enviarButton input[type="submit"][name="enviarComentario"]:hover {
+    background: #5E42A6;
+}
+
