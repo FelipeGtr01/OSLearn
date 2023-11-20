@@ -7,7 +7,7 @@ a:-webkit-any-link {
 
 /* Estilização para a página de usuário */
 body {
-    font-family: Arial, sans-serif;
+    font-family: Baskervville;
     margin: 0;
     padding: 0;
     background-color: #5E42A6;
@@ -16,7 +16,7 @@ body {
 
 /* Estilização para o menu */
 #menu {
-    width: 210px;
+    width: 230px;
     height: 100%;
     background-color: #312450; /* Cor de fundo do menu */
     color: #FFFFFF; /* Cor do texto do menu */
@@ -40,10 +40,14 @@ body {
     margin-left: 10px;
 }
 
+#menu a:hover{
+    background-color: #404190;
+    color: #FFFFFF;
+}
+
 /* Estilização para o conteúdo */
 #conteudo {
-    
-    margin-left: 200px;
+    margin-left: 225px;
     padding: 20px;
     color: #FFFFFF; /* Cor do texto da página de conteúdo */
     text-align: right; /* Alinhar o conteúdo à direita da div */
@@ -89,11 +93,7 @@ body {
     color: #FFFFFF; /* Cor do texto dentro do quadrado */
 }
 
-
-
 /* PARTE REFERENTES AOS MÓDULOS */
-
-/* CSS existente (não alterado) */
 
 /* Estilização para as divs dos módulos */
 .modulo {

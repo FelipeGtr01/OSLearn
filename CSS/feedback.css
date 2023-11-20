@@ -7,16 +7,16 @@ a:-webkit-any-link {
 
 /* Estilização para a página de usuário */
 body {
-    font-family: Arial, sans-serif;
+    font-family: Baskervville;
     margin: 0;
     padding: 0;
-    background-color: #B74E91;
+    background-color: #5E42A6;
     color: #FFFFFF;
 }
 
 /* Estilização para o menu */
 #menu {
-    width: 210px;
+    width: 230px;
     height: 100%;
     background-color: #312450; /* Cor de fundo do menu */
     color: #FFFFFF; /* Cor do texto do menu */
@@ -40,9 +40,14 @@ body {
     margin-left: 10px;
 }
 
+#menu a:hover{
+    background-color: #404190;
+    color: #FFFFFF;
+}
+
 /* Estilização para o conteúdo */
 #conteudo {
-    margin-left: 200px;
+    margin-left: 220px;
     padding: 20px;
     color: #FFFFFF; /* Cor do texto da página de conteúdo */
 }
@@ -50,7 +55,7 @@ body {
 #conteudo h1,
 #conteudo p {
     padding: 1%;
-    margin-left: 2%;
+    margin-left: 1%;
     text-align: left; /* Centralizar o título e o parágrafo */
     /*margin: 0 auto;
     max-width: 800px; /* Defina a largura máxima desejada */
@@ -85,9 +90,25 @@ th, td {
 
 /* Adicione esta parte para a mudança de cor no hover */
 td:hover {
-    background-color: #B74E91; /* Cor de fundo quando o mouse passa por cima */
+    background-color: #4849A2; /* Cor de fundo quando o mouse passa por cima */
     color: #FFFFFF; /* Cor do texto ao passar o mouse */
     cursor: pointer;
+}
+
+td p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    max-width: 475px; /* Defina o valor desejado para a largura máxima */
+    word-wrap: break-word; /* Permitir que as palavras quebrem linhas */
+}
+
+/* Adicione a classe .comment-text para os elementos p que deseja estilizar */
+td p.comment-text {
+    max-height: 100px; /* Altura máxima desejada para os comentários */
+    overflow-y: auto; /* Adicionar barra de rolagem vertical quando necessário */
 }
 
 .comment {
@@ -122,11 +143,11 @@ td:hover {
 
 /* Estilização para o container do campo de entrada e do botão */
 #enviarComentarioContainer {
-    background-color: #B74E91;
+    background-color: #5E42A6;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    padding: 15px;
+    padding: 9px;
 }
 
 /* Estilização para a div que contém o formulário */

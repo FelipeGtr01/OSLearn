@@ -1,5 +1,9 @@
-body {
-    font-family: Arial, sans-serif;
+*{
+    font-family: Baskervville;
+}
+
+body, html {
+    font-family: Baskervville;
     margin: 0;
     padding: 0;
     background: #5E42A6;

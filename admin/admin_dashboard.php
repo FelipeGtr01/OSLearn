@@ -1,11 +1,12 @@
 <?php
-session_start();
+    session_start();
 
-if (!isset($_SESSION["usuario"]) || !is_array($_SESSION["usuario"]) || $_SESSION["usuario"][1] != 1) {
-    // Se não houver uma sessão válida ou o usuário não for um administrador, redirecione para o login.
-    header("Location: ../index.php");
-    exit();
-}
+    if (!isset($_SESSION["usuario"]) || !is_array($_SESSION["usuario"]) || $_SESSION["usuario"][1] != 1) {
+        // Se não houver uma sessão válida ou o usuário não for um administrador, será redirecionado para o login.
+        header("Location: ../index.php");
+        exit();
+    }
+
 // Conteúdo específico para administradores.
 ?>
 
@@ -26,11 +27,9 @@ if (!isset($_SESSION["usuario"]) || !is_array($_SESSION["usuario"]) || $_SESSION
         </ul>
     </div>
     <div id="conteudo">
+        <!-- Conteúdo específico para administradores -->
         <h1>Bem-vindo ao Painel de Administração</h1>
         <p>Aqui você pode gerenciar os usuários e realizar outras tarefas de administração.</p>
     </div>
 </body>
 </html>
-
-
-

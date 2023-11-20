@@ -16,7 +16,7 @@
 
     // Definição de uma consulta SQL para recuperar informações dos usuários
     if ($adm) {
-        // Se for um administrador, serão recuperadas todas as informações
+        // Se for um administrador, recupere todas as informações
         $query = $conexao->prepare("SELECT * FROM usuarios");
     } else {
         // Se for um usuário comum, serão recuperadas apenas nome pontuação correta e incorreta, além de ordenar os usuários pelas suas pontuações.
@@ -42,6 +42,7 @@
             echo '<a href="../user_dashboard.php" class="menu-button">Voltar</a>';
         }
         ?>
+        Você já respondeu 3 móludos de 10 então seu progresso é 30%
         <a href="../logout.php" class="menu-button">Sair</a>
     </div>
 
@@ -49,14 +50,14 @@
         <table>
             <thead>
                 <tr>
-                    <th colspan="7" style="text-transform: uppercase;">Ranking de Usuários</th>
+                    <th colspan="7" style="text-transform: uppercase;">🏆 Ranking de Usuários 🏆</th>
                 </tr>
-                <tr style="font-weight: bold">
-                    <td>Nome</td>
-                    <td>Pontuação Correta</td>
-                    <td>Pontuação Incorreta</td>
+                <tr style="font-weight: bold; text-align: left;">
+                    <td>Nome 🥇</td>
+                    <td>Pontuação Correta ✅</td>
+                    <td>Pontuação Incorreta ❌</td>
                 </tr>
-            </thead>
+            </thead>  
             <tbody>
                 <?php foreach ($usuarios as $usuario): ?>
                 <tr>

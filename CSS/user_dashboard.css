@@ -16,7 +16,7 @@ body {
 
 /* Estilização para o menu */
 #menu {
-    width: 210px;
+    width: 230px;
     height: 100%;
     background-color: #312450; /* Cor de fundo do menu */
     color: #FFFFFF; /* Cor do texto do menu */
@@ -38,6 +38,11 @@ body {
     padding: 10px;
     border-bottom: 1px solid #FFF;
     margin-left: 10px;
+}
+
+#menu a:hover{
+    background-color: #404190;
+    color: #FFFFFF;
 }
 
 /* Estilização para o conteúdo */
@@ -68,8 +73,8 @@ body {
 
 /* Estilização para a div de boas-vindas */
 #boas-vindas {
-    width: 90%;
-    height: 495px;
+    width: 91%;
+    height: 450px;
     border-radius: 25px;
     background: linear-gradient(334deg, rgba(255, 255, 255, 0.31) -14.65%, rgba(255, 255, 255, 0.31) -14.65%, rgba(255, 255, 255, 0.31) -14.64%, rgba(255, 255, 255, 0.00) 103.2%), linear-gradient(149deg, rgba(255, 232, 191, 0.40) -4.75%, rgba(255, 232, 191, 0.00) 119.61%);
     margin: 5% 4%; /* Centraliza verticalmente e mantém 20% de margem superior e inferior */
@@ -98,3 +103,9 @@ body {
     line-height: normal;
 }
 
+img{
+    max-width: 25%;
+    height: auto;
+    margin-left: 370px;
+    border-radius: 15px;
+}

@@ -17,6 +17,7 @@
     <title>Página inicial</title>
 </head>
 <body>
+    <h3><a href="http://localhost/OSLearn/">Home</a></h3> <!-- Verificar se isso ainda vai ficar funcionando ou não -->
     <div class="conteudo">
         <div class="titulo-imagem">
             <div class="titulo">

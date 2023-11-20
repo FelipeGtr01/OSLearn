@@ -1,63 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../CSS/quiz.css">
+</head>
+<body>
 <?php
     session_start();
 
     if (!isset($_SESSION['usuario'])) {
-        // Se o usuário não está autenticado, será redirecionado para a página de login
         header('Location: ../modulos/logar.php');
         exit();
-    }else{
-        $apiUrl = 'http://localhost/OSLearn/perguntas/api.php';
+    } else {
+        if (isset($_GET['modulo'])) {
+            $modulo_atual = $_GET['modulo'];
+        } else {
+            header('Location: ../modulos/trilha.php');
+        }
+
+        $apiUrl = "http://localhost/oslearn/perguntas/api.php?modulo=$modulo_atual";
         $response = file_get_contents($apiUrl);
         $data = json_decode($response, true);
 
-        $perguntas = $data; // Supondo que a API retorna as perguntas diretamente {revisar}
-
-        $pergunta_atual = isset($_SESSION['pergunta_atual']) ? intval($_SESSION['pergunta_atual']) : 0;
+        $perguntas = $data; 
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (isset($_POST['resposta'])) {
-                $resposta_escolhida = $_POST['resposta'];
-                $_SESSION["resposta_$pergunta_atual"] = $resposta_escolhida;
+            // Lógica para processar respostas.
 
-                if (isset($_POST['voltar']) && $pergunta_atual > 0) {
-                    $pergunta_atual--;
-                } else if (isset($_POST['avancar']) && $pergunta_atual < count($perguntas) - 1) {
-                    $pergunta_atual++;
-                } else if (isset($_POST['verificar'])) {
-                    header("location: resultado.php");
-                    exit();
+            $_SESSION["respostas"] = [];
+            
+            foreach ($perguntas as $index => $pergunta) {
+                if (isset($_POST["resposta_$index"])) {
+                    $resposta_escolhida = $_POST["resposta_$index"];
+                    // Salvando a resposta do usuário no array de respostas.
+                    $_SESSION["respostas"][$index] = $resposta_escolhida;
                 }
-                
-                $_SESSION['pergunta_atual'] = $pergunta_atual; // Atualização da variável de sessão
+            }
+
+            if (isset($_POST['verificar'])) {
+                // Redirecione para a página de resultado com o parâmetro do módulo
+                $modulo_atual = isset($_GET['modulo']) ? $_GET['modulo'] : 1;
+                header("location: resultado.php?modulo=$modulo_atual");
             }
         }
 
-        if ($pergunta_atual < count($perguntas)) {
-            $perguntaAtual = $perguntas[$pergunta_atual]['pergunta'];
-            $alternativas = $perguntas[$pergunta_atual]['alternativas'];
-            echo "<h1>{$perguntaAtual}</h1>";
-            echo "<form method='post'>";
+        if(isset($data) && is_array($data)){
+
+        echo "<form method='post'>";
+
+        foreach ($data as $index => $pergunta) {
+            echo "<h1>{$pergunta['pergunta']}</h1>";
             
-            foreach ($alternativas as $j => $alternativa) {
-                echo "<div class='alternativa'>";
-                echo "<input type='radio' name='resposta' value='$j'/> {$alternativa['texto']} <br>";
-                echo "</div>";
+            // Exibiçõa da imagem relacionada à pergunta, se houver.
+            $imagens = $pergunta['imagem'];
+            if (!empty($imagens)) {
+                echo "<img src='data:image/jpeg;base64," . $imagens . "' alt='Imagem da pergunta' style='max-width: 200px;' />";
             }
 
-            echo "<br><div class='botoes'>";
-            
-            if ($pergunta_atual > 0) {
-                echo "<button type='submit' name='voltar'>Voltar</button>";
+            // Exibição da resposta salva pelo usuário, se houver.
+            $resposta_salva = isset($_SESSION['respostas'][$index]) ? $_SESSION['respostas'][$index] : '';
+
+            // Exibição das alternativas com a opção marcada.
+            foreach ($pergunta['alternativas'] as $j => $alternativa) {
+                echo "<div class='alternativa'>";
+                $checked = $j == $resposta_salva ? 'checked' : '';
+                echo "<input type='radio' name='resposta_$index' value='$j' $checked/> {$alternativa['texto']} <br>";
+                echo "</div>";
             }
-            
-            if ($pergunta_atual < count($perguntas) - 1) {
-                echo "<button type='submit' name='avancar'>Avançar</button>";
-            } else {
-                echo "<button type='submit' name='verificar'>Verificar Respostas</button>";
-            }
-            
-            echo "</div>";
-            echo "</form>";
+        }
+        // Adicione um botão para verificar as respostas.
+        echo "<button type='submit' name='verificar'>Verificar Respostas</button>";
+        echo "</form>";
+        } else{
+            echo "Erro!";
         }
     }
 ?>
+</body>
+</html>

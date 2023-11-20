@@ -27,7 +27,9 @@
                     <button type="submit" class="botao-cadastrar">Cadastrar</button>
                 </form>
                 <br><br>
-                <a href="../index.php">Sair</a>
+                <div id="botaoSairContainer"> 
+                    <a id="botaoSair" href="../index.php">SAIR</a>
+                </div>
             </div>
         </div>
     </div>

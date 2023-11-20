@@ -10,12 +10,12 @@
 <body>
     <div id="menu">
         <ul>
-            <li><a href="../user_dashboard.php">OSLearn</a></li>
-            <li><a href="trilha.php">TRILHA DE ESTUDOS</a></li>
-            <li><a href="ranking.php">RANKING</a></li>
-            <li><a href="feedback.php">FEEDBACK</a></li>
-            <li><a href="conta.php">CONTA</a></li>
-            <li><a href="../logout.php" id="sair">SAIR</a></li> 
+            <li><a href="../user_dashboard.php">OSLearn 💻</a></li>
+            <li><a href="trilha.php">TRILHA DE ESTUDOS 📚</a></li>
+            <li><a href="ranking.php">RANKING 📊</a></li>
+            <li><a href="feedback.php">FEEDBACK ✍</a></li>
+            <li><a href="conta.php">CONTA 🔧</a></li>
+            <li><a href="../logout.php" id="sair">SAIR 🔚</a></li> 
         </ul>
     </div>
     <div id="conteudo">
@@ -26,7 +26,7 @@
                 <h2>Módulo 1</h2>
                 <p>Aqui você poderá ter uma introdução ao assunto de sistemas operacionais e poderá treinar conceitos básicos que a matéria exige</p>
                 <br>
-                <a href="../perguntas/quiz.php" class="botao-entrar">Iniciar Módulo</a>
+                <a href="../perguntas/quiz.php?modulo=1" class="botao-entrar">Iniciar Módulo</a>
             </div>
         </div>
 
@@ -37,7 +37,7 @@
                 <h2>Módulo 2</h2>
                 <p>Aqui você poderá ter uma introdução ao assunto de sistemas operacionais e poderá treinar conceitos básicos que a matéria exige</p>
                 <br>
-                <a href="trilha_2.php" class="botao-entrar">Iniciar Módulo</a>
+                <a href="../perguntas/quiz.php?modulo=2" class="botao-entrar">Iniciar Módulo</a>
             </div>
         </div>
 
@@ -48,7 +48,7 @@
                 <h2>Módulo 3</h2>
                 <p>Aqui você poderá ter uma introdução ao assunto de sistemas operacionais e poderá treinar conceitos básicos que a matéria exige</p>
                 <br>
-                <a href="trilha_3.php" class="botao-entrar">Iniciar Módulo</a>
+                <a href="../perguntas/quiz.php?modulo=3" class="botao-entrar">Iniciar Módulo</a>
             </div>
         </div>
 

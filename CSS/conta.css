@@ -1,11 +1,15 @@
 /* Estilos globais */
-body {
+body, html {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to top, #000000, #100458);
+    font-family: Baskervville;
+    background: #5E42A6;
     color: #FFFFFF;
     height: 100vh;
+    display: flex;
+    justify-content: center; /* Centraliza o conteúdo na tela horizontalmente */
+    align-items: center; /* Centraliza o conteúdo na tela verticalmente */
+    margin-left: 6%;
 }
 
 /* Estilização para links */
@@ -21,7 +25,7 @@ a:-webkit-any-link {
 
 /* Estilização para o menu */
 #menu {
-    width: 210px;
+    width: 230px;
     height: 100%;
     background-color: #312450;
     color: #FFFFFF;
@@ -45,35 +49,44 @@ a:-webkit-any-link {
     margin-left: 10px;
 }
 
-/* Estilização para o conteúdo principal */
-#content-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 210px;
+#menu a:hover{
+    background-color: #404190;
+    color: #FFFFFF;
 }
 
-/* Estilização para o conteúdo */
-#conteudo {
+/* Estilos para o conteúdo */
+#content-container {
+    background: rgba(0, 0, 0, 0.5); /* Fundo com transparência */
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%; /* Largura do conteúdo */
+    max-width: 800px; /* Largura máxima do conteúdo */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto;
+    align-items: center; /* Centraliza o conteúdo verticalmente */
+}
+
+#conteudo {
+    text-align: center; /* Centraliza o título horizontalmente */
+    padding: 20px;
 }
 
 #conteudo a#mudar {
     color: #9370DB;
-} /* Alguma coisa não está funcionando como deveria */
+} /*não está funcionando*/
 
-#header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+.informacoes {
+    text-align: left; /* alinhamento do texto das labesl */
     width: 100%;
+    max-width: 400px;
+    margin: 0 auto; /* Centraliza o formulário horizontalmente em relação ao content-container */
 }
+
+/*
+.informacoes form label{
+    text-align: left;
+}
+*/
 
 /* Estilo para o ícone do usuário */
 .user-icon {
@@ -90,30 +103,17 @@ a:-webkit-any-link {
     margin-bottom: 10px;
 }
 
-/* Estilização para o formulário e labels */
-.informacoes {
-    width: 100%;
-    text-align: left;
-}
-
-.informacoes label {
-    display: block;
-    margin-bottom: 5px;
-}
-
 /* Estilização para o botão "Salvar Alterações" */
 input[type="submit"] {
     background-color: #F2873A;
-    width: 107%;
+    width: 100%;
     padding: 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
     color: white;
     text-align: center;
     text-decoration: none;
-    display: block;
 }
 
 /* Estilização para o hover do botão */
@@ -121,14 +121,21 @@ input[type="submit"]:hover {
     background-color: #FFA64C;
 }
 
+#mostrar-senha{
+    background-color: #9370DB;
+    margin-bottom: 10px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
 /* Estilização para os inputs */
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-    width: 100%;
+    width: 92%;
     padding: 10px;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
     margin-bottom: 10px;
 }

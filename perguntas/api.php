@@ -12,6 +12,8 @@
         SELECT
             p.id AS pergunta_id,
             p.pergunta AS pergunta_texto,
+            p.imagem AS pergunta_imagem,
+            p.modulo AS pergunta_modulo,
             a.id AS alternativa_id,
             a.texto_alternativa AS alternativa_texto,
             a.correta AS alternativa_correta
@@ -19,23 +21,30 @@
             perguntas p
         INNER JOIN
             alternativas a ON p.id = a.id_pergunta
+        WHERE
+            p.modulo = :modulo
     ";
 
-    $result = $conexao->query($query);
+    $modulo_atual = isset($_GET['modulo']) ? $_GET['modulo'] : 1; // Valor padrão 1 se não especificado
+    $stmt = $conexao->prepare($query);
+    $stmt->bindParam(':modulo', $modulo_atual, PDO::PARAM_INT);
+    $stmt->execute(); // Execute a consulta com o parâmetro do módulo
 
-    if (!$result) {
-        die("Erro na consulta: " . $conexao->errorInfo()[2]);
+    if ($stmt->rowCount() == 0) {
+        die("Nenhum resultado encontrado para o módulo especificado.");
     }
 
     $perguntas = [];
-    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $perguntaId = $row['pergunta_id'];
 
         if (!isset($perguntas[$perguntaId])) {
             $perguntas[$perguntaId] = [
                 'id' => $perguntaId,
                 'pergunta' => $row['pergunta_texto'],
-                'alternativas' => [],
+                'imagem' => base64_encode($row['pergunta_imagem']),
+                'modulo' => $row['pergunta_modulo'],
+                'alternativas' => []
             ];
         }
 
