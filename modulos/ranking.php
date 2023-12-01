@@ -9,7 +9,7 @@
         $conexao = $conexaoClass->conectar();
 
         $adm = $_SESSION["usuario"][1];
-        $nome = $_SESSION["usuario"][0];
+        $nomeUsuarioLogado = $_SESSION["usuario"][0];
     } else {
         echo "<script>window.location = 'index.php'</script>";
     }
@@ -42,16 +42,17 @@
             echo '<a href="../user_dashboard.php" class="menu-button">Voltar</a>';
         }
         ?>
-        Você já respondeu 3 móludos de 10 então seu progresso é 30%
-        <a href="../logout.php" class="menu-button">Sair</a>
+        
+    </div>
+    
+    <div class="title-container">
+        <h2>🏆 RANKING DE USUÁRIOS 🏆</h2>
+        <?php include('../perguntas/progresso.php'); ?>
     </div>
 
     <div id="tabelaUsuarios">
         <table>
             <thead>
-                <tr>
-                    <th colspan="7" style="text-transform: uppercase;">🏆 Ranking de Usuários 🏆</th>
-                </tr>
                 <tr style="font-weight: bold; text-align: left;">
                     <td>Nome 🥇</td>
                     <td>Pontuação Correta ✅</td>
@@ -60,7 +61,7 @@
             </thead>  
             <tbody>
                 <?php foreach ($usuarios as $usuario): ?>
-                <tr>
+                <tr <?php echo ($usuario["nome"] === $nomeUsuarioLogado) ? 'class="usuario-logado"' : ''; ?> >
                     <td><?php echo $usuario["nome"]; ?></td>
                     <td><?php echo $usuario["pontuacao_correta"]; ?></td>
                     <td><?php echo $usuario["pontuacao_incorreta"]; ?></td>

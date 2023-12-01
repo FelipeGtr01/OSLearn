@@ -11,7 +11,7 @@ body, html {
 
 h2 {
     color: #FFFFFF;
-    text-align: center; /* Centraliza o texto horizontalmente */
+    margin: 10px 0;
 }
 
 div#tabelaUsuarios {
@@ -54,13 +54,50 @@ div#tabelaUsuarios table tbody tr:hover {
 }
 
 div#tabelaUsuarios table tbody tr.usuario-logado {
-    background-color: #4710d3; /* Cor de destaque para o usuário logado */
+    background-color: #5E42A6; /* Cor de destaque para o usuário logado */
     color: #fff; /* Cor do texto para o usuário logado */
-    background-color: rgba(216, 216, 216, 0.5);
 }
 
 div#tabelaUsuarios table tbody td:first-child {
     text-align: left;
+}
+
+div#tabelaUsuarios table tbody td button#editar {
+    margin: 0 10px;
+    padding: 8px 12px;
+    text-decoration: none;
+    background-color: #ffe600;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+div#tabelaUsuarios table tbody td button#editar:hover {
+    background-color: #afafaf;
+}
+
+div#tabelaUsuarios table tbody tr:hover td button#editar {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+}
+
+div#tabelaUsuarios table tbody td button#excluir {
+    margin: 0 10px;
+    padding: 8px 12px;
+    text-decoration: none;
+    background-color: #ff0000;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+div#tabelaUsuarios table tbody td button#excluir:hover {
+    background-color: #afafaf;
+}
+
+div#tabelaUsuarios table tbody tr:hover td button#excluir {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
 }
 
 /* Estilo dos botões e cabeçalho */

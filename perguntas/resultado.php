@@ -9,15 +9,33 @@
 
     $modulo_atual = isset($_GET['modulo']) ? $_GET['modulo'] : 1;
 
-    // Recuperação das respostas do usuário da sessão
-    $respostas = isset($_SESSION["respostas"]) ? $_SESSION["respostas"] : [];
+    // Recuperação das respostas do usuário do módulo atual da sessão
+    $respostas = isset($_SESSION["respostas_modulo_" . $modulo_atual]) ? $_SESSION["respostas_modulo_" . $modulo_atual] : [];
 
-    // Suponhamos que você tenha um array associativo $respostas_corretas onde as chaves são os índices das perguntas e os valores são as respostas corretas.
-    $respostas_corretas = [
-        0 => 1, // Resposta correta para a pergunta 0
-        1 => 1, // Resposta correta para a pergunta 1
-        2 => 1,
-        3 => 1,
+
+    $respostas_por_modulo = [
+        1 => [
+            'respostas_corretas' => [
+                //a resposta correta corresponde a posição que a alternativa correta aparece... 
+                0 => 1, // Resposta correta para a pergunta 0 no módulo 1
+                1 => 1,
+                2 => 0
+            ],
+            'respostas_usuario' => isset($_SESSION["respostas_modulo_1"]) ? $_SESSION["respostas_modulo_1"] : [],
+        ],
+        2 => [
+            'respostas_corretas' => [
+                0 => 1, // Resposta correta para a pergunta 0 no módulo 2
+            ],
+            'respostas_usuario' => isset($_SESSION["respostas_modulo_2"]) ? $_SESSION["respostas_modulo_2"] : [],
+        ],
+        3 => [
+            'respostas_corretas' => [
+                0 => 1, // Resposta correta para a pergunta 0 no módulo 3
+                1 => 0, // Resposta correta para a pergunta 1 no módulo 3
+            ],
+            'respostas_usuario' => isset($_SESSION["respostas_modulo_3"]) ? $_SESSION["respostas_modulo_3"] : [],
+        ],
     ];
 
     // Realização do cálculo da pontuação com base nas respostas corretas
@@ -25,10 +43,12 @@
     $pontuacao_incorreta = 0;
 
     // Verificação se o usuário respondeu a alguma pergunta
-    if (count($respostas) > 0) {
-        foreach ($respostas as $index => $resposta) {
-            if (isset($respostas_corretas[$index])) {
-                if ($resposta == $respostas_corretas[$index]) {
+    if (count($respostas_por_modulo[$modulo_atual]['respostas_usuario']) > 0) {
+        foreach ($respostas_por_modulo[$modulo_atual]['respostas_usuario'] as $index => $resposta) {
+            if (isset($respostas_por_modulo[$modulo_atual]['respostas_corretas'][$index])) {
+                $resposta_correta = $respostas_por_modulo[$modulo_atual]['respostas_corretas'][$index];
+                
+                if ($resposta == $resposta_correta) {
                     $pontuacao_correta += 1000; // Incrementa a pontuação correta
                 } else {
                     $pontuacao_incorreta += 1000; // Incrementa a pontuação incorreta
@@ -38,6 +58,7 @@
     } else {
         echo "Você não respondeu a nenhuma pergunta.";
     }
+    
 
     // Exibição da pontuação na página
     echo "<h1>Sua pontuação no módulo $modulo_atual:</h1>";

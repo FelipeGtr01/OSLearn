@@ -9,7 +9,7 @@
         $conexao = $conexaoClass->conectar();
 
         $adm = $_SESSION["usuario"][1];
-        $nome = $_SESSION["usuario"][0];
+        $nomeUsuarioLogado = $_SESSION["usuario"][0];
     } else {
         echo "<script>window.location = 'index.php'</script>";
     }
@@ -28,7 +28,7 @@
 ?>
 <html>
 <head>
-    <link rel="stylesheet" href="../CSS/ranking.css"> <!-- Por que ranking? -->
+    <link rel="stylesheet" href="../CSS/usuarios_cadastrados.css"> <!-- Por que ranking? -->
 </head>
 <body>
     <div class="header">
@@ -39,16 +39,16 @@
             echo '<a href="../user_dashboard.php" class="menu-button">Voltar</a>';
         }
         ?>
-        <h2>Bem-vindo, Administrador</h2>
-        <a href="../logout.php" class="menu-button">Sair</a>
+        <div class="title-container">
+            <br>
+            <h2>🔎 LISTA DE USUÁRIOS 🔍</h2>
+        </div>
     </div>
 
     <div id="tabelaUsuarios">
         <table>
             <thead>
-                <tr>
-                    <th colspan="7" style="text-transform: uppercase;">Ranking de Usuários</th>
-                </tr>
+                
                 <tr style="font-weight: bold">
                     <td>Nome</td>
                     <td>Email</td>
@@ -61,14 +61,49 @@
             </thead>
             <tbody>
                 <?php foreach ($usuarios as $usuario): ?>
-                <tr>
+                    
+                    <?php
+                        /* Conta principal de administração do sistema*/
+                        $isUsuarioLogado = ($usuario["nome"] === $nomeUsuarioLogado);
+                        $isAdminLogado = ($usuario["email"] === "ADMIN@gmail.com");
+                        $isAdminParaExcluir = ($usuario["adm"] == 1 && !$isAdminLogado && $isUsuarioLogado);
+                        $isAdminOutro = ($usuario["adm"] == 1 && !$isUsuarioLogado && !$isAdminLogado);
+                        $isPerfilAdminGlobal = ($usuario["email"] === "ADMIN@gmail.com");
+                        
+                    ?>
+
+                <tr <?php echo $isUsuarioLogado ? 'class="usuario-logado"' : ''; ?> >
                     <td><?php echo $usuario["nome"]; ?></td>
                     <td><?php echo $usuario["email"]; ?></td>
                     <td><?php echo $usuario["senha"]; ?></td>
                     <td><?php echo $usuario["adm"]; ?></td>
                     <td><?php echo $usuario["id"]; ?></td>
-                    <td><button id="editar"><a href="edicao.php?id=<?php echo $usuario["id"]; ?>">Editar</a></button></td>
-                    <td><button id="excluir"><a href="excluir.php?id=<?php echo $usuario["id"]; ?>">Excluir</a></button></td>
+                    <td>
+                        <?php
+                            // Verifica se o usuário logado é um administrador e se está tentando editar a conta "ADMIN@gmail.com"
+                            if ($isAdminLogado || $isPerfilAdminGlobal) {
+                                echo "Não permitido";
+                            } else {
+                                // Se não for o administrador tentando editar a conta "ADMIN@gmail.com", exibe o botão "Editar"
+                                echo '<button id="editar" ';
+                                if ($isAdminOutro) {
+                                    echo 'disabled';
+                                }
+                                echo '><a href="edicao.php?id=' . $usuario["id"] . '">Editar</a></button>';
+                            }
+                        ?>    
+                    </td>
+                    <td>
+                        <?php
+                            // Verifica se o usuário logado é um administrador e se está tentando excluir sua própria conta
+                            if ($isAdminParaExcluir || ($isAdminLogado && $isUsuarioLogado) || $isPerfilAdminGlobal) {
+                                echo "Não permitido";
+                            } else {
+                                // Se não for o administrador tentando excluir sua própria conta, exibe o botão "Excluir" com confirmação
+                                echo '<button id="excluir" onclick="confirmarExclusao(' . $usuario["id"] . ', \'' . $usuario["nome"] . '\',' . $isAdminParaExcluir . ')">Excluir</button>';
+                            }
+                        ?>
+                    </td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -76,3 +111,21 @@
     </div>
 </body>
 </html>
+
+<script>
+    function confirmarExclusao(id, nome, isAdmin) {
+        var mensagem = "Tem certeza que deseja excluir o usuário '" + nome + "'?";
+        
+        if (isAdmin) {
+            mensagem += "\nEste é um perfil de administrador. Ao excluir, o acesso administrativo será removido.";
+        }
+
+        var confirmacao = confirm(mensagem);
+
+        if (confirmacao) {
+            // Se o usuário confirmar, redirecionar para a página de exclusão com o ID do usuário
+            window.location.href = 'excluir.php?id=' + id;
+        }
+        // Se o usuário cancelar, nada acontecerá
+    }
+</script>

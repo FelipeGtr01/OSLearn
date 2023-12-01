@@ -181,3 +181,21 @@ td p.comment-text {
     background: #5E42A6;
 }
 
+div#conteudo form input[type="submit"] {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    text-decoration: none;
+    background-color: #F2873A; 
+    color: #fff; /* Cor do texto do botão "Apagar Comentário" */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+div#conteudo form input[type="submit"]:hover {
+    background-color: #cc7c43; 
+}
+
+

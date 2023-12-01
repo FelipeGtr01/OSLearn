@@ -31,7 +31,39 @@
         }
     } else {
         // Mensagem de erro caso as senhas não correspondam
-        echo "As senhas não correspondem. Tente novamente.";
+        header("Location: cadastrar.php?erro=credenciais_incorretas");
+        exit(); // Certifique-se de sair do script para evitar execução adicional
     }
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+</head>
+<body>
+    <!-- Seu formulário HTML com os campos preenchidos -->
+    <form method="post" action="modulos/cadastrar.php">
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" value="<?php echo isset($nome) ? $nome : ''; ?>">
+        <br>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" value="<?php echo isset($email) ? $email : ''; ?>">
+        <br>
+
+        <label for="senha">Senha:</label>
+        <input type="password" name="senha">
+        <br>
+
+        <label for="senha_confirmacao">Confirme a senha:</label>
+        <input type="password" name="senha_confirmacao">
+        <br>
+
+        <input type="submit" value="Cadastrar">
+    </form>
+</body>
+</html>

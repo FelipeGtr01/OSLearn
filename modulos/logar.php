@@ -9,8 +9,15 @@
 </head>
 <body>
     <div class="logarphp">
+        <?php
+        // Verifica se há um parâmetro de erro na URL
+        if (isset($_GET['erro']) && $_GET['erro'] === 'credenciais_incorretas') {
+            echo '<div style="">'; //mensagem de erro
+            echo 'Usuário ou senha incorretos. Por favor, tente novamente.';
+            echo '</div>';
+        }
+        ?>
         <h1>Olá! Seja Bem-vindo!</h1>
-
         <div id="formulario">
             <form method="POST" action="login.php">
                 <div class="form">

@@ -22,14 +22,22 @@
 <body>
     <div id="menu">
         <ul>
-            <li><a href="usuarios_cadastrados.php">LISTA DE USUÁRIOS</a></li>
-            <li><a href="../logout.php" id="sair">SAIR</a></li> 
+            <li><a href="admin_dashboard.php">OSLearn (ADM)💻</a></li>
+            <li><a href="usuarios_cadastrados.php">LISTA DE USUÁRIOS 📄</a></li>
+            <li><a href="gerenciar.php">GERENCIAR MÓDULOS 🔩</a></li>
+            <li><a href="../logout.php" id="sair">SAIR 🔚</a></li> 
         </ul>
     </div>
     <div id="conteudo">
-        <!-- Conteúdo específico para administradores -->
-        <h1>Bem-vindo ao Painel de Administração</h1>
-        <p>Aqui você pode gerenciar os usuários e realizar outras tarefas de administração.</p>
+        <!-- Conteúdo específico para administradores -->        
+        <div id="boas-vindas">
+            <h1>Bem-vindo!</h1>
+            <h1>Painel de Administração ⚙</h1>
+            <br>
+            <img src="../assets/img/logo.png" alt="Logo OsLearn">
+            <br>
+            <p>Aqui você pode gerenciar os usuários e realizar outras tarefas de administração. </p>
+        </div>
     </div>
 </body>
 </html>

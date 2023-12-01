@@ -29,6 +29,7 @@
             $nome = $user['nome'];
             $email = $user['email'];
             $senha = $user['senha'];
+            $tipoConta = isset($user["adm"]) ? $user["adm"] : 0; // Definindo o tipo de conta
         } else {
             header('Location: ../admin_dashboard.php');
             exit();
@@ -51,12 +52,16 @@
                 die("Erro na conexão com o banco de dados: " . $e->getMessage());
             }
 
+            // Recuperação do valor do campo de seleção (admin ou usuário comum)
+            $tipoConta = isset($_POST["tipo_conta"]) ? $_POST["tipo_conta"] : 0; // Se não estiver definido, assume como usuário comum
+
             // Atualização dos dados no banco de dados
-            $query = $pdo->prepare("UPDATE usuarios SET nome=:novoNome, email=:novoEmail, senha=:novaSenha WHERE id=:idUsuario");
+            $query = $pdo->prepare("UPDATE usuarios SET nome=:novoNome, email=:novoEmail, senha=:novaSenha, adm=:tipoConta WHERE id=:idUsuario");
             $query->bindParam(':idUsuario', $idUsuario, PDO::PARAM_INT);
             $query->bindParam(':novoNome', $novoNome, PDO::PARAM_STR);
             $query->bindParam(':novoEmail', $novoEmail, PDO::PARAM_STR);
             $query->bindParam(':novaSenha', $novaSenha, PDO::PARAM_STR);
+            $query->bindParam(':tipoConta', $tipoConta, PDO::PARAM_INT);
 
             if ($query->execute()) {
                 // A atualização foi bem-sucedida, será feito o redirecionamento ou será exibido uma mensagem de sucesso
@@ -76,31 +81,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/conta.css"> 
+    <link rel="stylesheet" href="../CSS/edicao.css"> 
     <title>Edição - OSLearn</title>
 </head>
 <body>
-    <div id="conteudo">
-        <!-- Conteúdo específico para administradores -->
-        <h1>Configurações</h1>
-        <div class="user-icon">F</div>
-        <a href="#" id="mudar">Mudar Foto do Perfil</a>
-        <br><br>
-        <div class="informacoes">
-            <form action="" method="post">
-                <input type="hidden" name="id_usuario" value="<?php echo $idUsuario; ?>">
+    <div id="content-container">
+        <div id="conteudo">
+            <!-- Conteúdo específico para administradores -->
+                <div id="header">
+                    <a href="../admin/usuarios_cadastrados.php" class="menu-button">Sair sem alterar</a>
+                    <h1>Configurações</h1>
+                    <div class="user-icon">F</div>
+                    <a href="#" id="mudar">Mudar Foto do Perfil</a> <!-- Talvez seja desenvolvido -->
+                </div>
+                <br><br>
+                <div class="informacoes">
+                    <form action="" method="post">
+                        <input type="hidden" name="id_usuario" value="<?php echo $idUsuario; ?>">
 
-                <label>Nome:</label><br>
-                <input type="text" name="nome_completo" placeholder="nome" value="<?php echo $nome; ?>"><br><br>
+                        <label>NOME:</label>
+                        <input type="text" name="nome_completo" placeholder="nome" value="<?php echo $nome; ?>"><br><br>
 
-                <label>E-mail:</label><br>
-                <input type="email" name="email" placeholder="email" value="<?php echo $email; ?>"><br><br>
+                        <label>EMAIL:</label>
+                        <input type="email" name="email" placeholder="email" value="<?php echo $email; ?>"><br><br>
 
-                <label>Senha:</label><br>
-                <input type="password" name="senha" placeholder="senha" value="<?php echo $senha; ?>"><br><br>
+                        <label>SENHA:</label>
+                        <input type="text" name="senha"  id="senha-input" placeholder="senha" value="<?php echo $senha; ?>">
+                        
+                        <br><br>
+                        <label>Tipo de Conta:</label>
+                        <select name="tipo_conta">
+                            <option value="0" <?php echo ($tipoConta == 0) ? 'selected' : ''; ?>>Usuário Comum</option>
+                            <option value="1" <?php echo ($tipoConta == 1) ? 'selected' : ''; ?>>Administrador</option>
+                        </select><br><br>
 
-                <input type="submit" value="Salvar Alterações" name="atualizar">
-            </form>
+                        <br><br>
+
+                        
+                        <input type="submit" value="Salvar Alterações" name="atualizar">
+                    </form>
+                </div>
         </div>
     </div>
 </body>

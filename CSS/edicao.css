@@ -1,0 +1,156 @@
+/* Estilos globais */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Baskervville;
+    background: #5E42A6;
+    color: #FFFFFF;
+    height: 100vh;
+    display: flex;
+    justify-content: center; /* Centraliza o conteúdo na tela horizontalmente */
+    align-items: center; /* Centraliza o conteúdo na tela verticalmente */
+}
+
+/* Estilização para links */
+a:-webkit-any-link {
+    outline: none;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+#sair {
+    color: #5E42A6;
+}
+
+/* Estilização para o menu */
+#menu {
+    width: 230px;
+    height: 100%;
+    background-color: #312450;
+    color: #FFFFFF;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#menu ul {
+    height: 100%;
+    list-style-type: none;
+    padding: 0;
+    text-align: right;
+    margin-top: 100%;
+    margin-right: 10px;
+}
+
+#menu li {
+    padding: 10px;
+    border-bottom: 1px solid #FFF;
+    margin-left: 10px;
+}
+
+#menu a:hover{
+    background-color: #404190;
+    color: #FFFFFF;
+}
+
+a.menu-button {
+    display: inline-block; /* Torna os botões elementos em linha para alinhá-los horizontalmente */
+    margin: 0 10px; /* Espaçamento entre os botões */
+    padding: 8px 12px;
+    text-decoration: none;
+    background-color: #007bff; /* Cor de fundo dos botões */
+    color: #fff; /* Cor do texto dos botões */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Efeito de transição suave para a cor de fundo */
+}
+
+a.menu-button:hover {
+    background-color: #0056b3; /* Cor de fundo ao passar o mouse sobre os botões */
+}
+
+/* Estilos para o conteúdo */
+#content-container {
+    background: rgba(0, 0, 0, 0.5); /* Fundo com transparência */
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%; /* Largura do conteúdo */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o conteúdo verticalmente */
+}
+
+#conteudo {
+    text-align: center; /* Centraliza o título horizontalmente */
+    padding: 20px;
+}
+
+#conteudo a#mudar {
+    color: #9370DB;
+} /*não está funcionando*/
+
+.informacoes {
+    text-align: left; /* alinhamento do texto das labesl */
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto; /* Centraliza o formulário horizontalmente em relação ao content-container */
+}
+
+/*
+.informacoes form label{
+    text-align: left;
+}
+*/
+
+/* Estilo para o ícone do usuário */
+.user-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #9370DB;
+    color: #FFF;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+/* Estilização para o botão "Salvar Alterações" */
+input[type="submit"] {
+    background-color: #F2873A;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* Estilização para o hover do botão */
+input[type="submit"]:hover {
+    background-color: #FFA64C;
+}
+
+#mostrar-senha{
+    background-color: #9370DB;
+    margin-bottom: 10px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+/* Estilização para os inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 92%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}

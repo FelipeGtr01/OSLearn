@@ -9,6 +9,14 @@
 </head>
 <body>
     <div class="logarphp">
+        <?php
+            // Verifica se há um parâmetro de erro na URL
+            if (isset($_GET['erro']) && $_GET['erro'] === 'credenciais_incorretas') {
+                echo '<div style="">'; //mensagem de erro
+                echo 'Erro ao confirmar senha. Por favor, tente novamente.';
+                echo '</div>';
+            }
+        ?>
         <h1>OSLearn, Seja Bem-Vindo!</h1>
         <div id="formulario">
             <form method="POST" action="cadastrar_process.php">

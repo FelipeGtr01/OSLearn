@@ -38,22 +38,25 @@
                 $query = $conexao->prepare("SELECT * FROM usuarios WHERE email = ? AND senha = ? "); //A interrogação é utilizada para atribuir um valor quando for executado.
                 $query->execute(array($email, $senha));
                 
-
-                if ($user = $query->fetch(PDO::FETCH_ASSOC)) {
+                // Verifica se encontrou um usuário correspondente
+                $user = $query->fetch(PDO::FETCH_ASSOC);
+            
+                if ($user && $user['email'] === $email && $user['senha'] === $senha) {
                     // Credenciais corretas
                     session_start();
                     $_SESSION["usuario"] = array($user["nome"], $user["adm"], "id" => $user["id"]);
-                    
-                    if ($user["adm"] == 1) {
-                        // Usuário é um administrador, redirecionar para a página de administração.
-                        return "<script>window.location = '../admin/admin_dashboard.php'</script>";
-                    } else {
-                        // Usuário comum, redirecionar para a página do usuário.
-                        return "<script>window.location = '../user_dashboard.php'</script>";
-                    }
+                
+                if ($user["adm"] == 1) {
+                    // Usuário é um administrador, redirecionar para a página de administração.
+                    return "<script>window.location = '../admin/admin_dashboard.php'</script>";
+                } else {
+                    // Usuário comum, redirecionar para a página do usuário.
+                    return "<script>window.location = '../user_dashboard.php'</script>";
+                }
                 } else {
                     // Credenciais incorretas
-                    return "<script>window.location = 'index.php'</script>";
+                    header("Location: logar.php?erro=credenciais_incorretas");
+                    exit(); // Certifique-se de sair do script para evitar execução adicional
                 }                  
             }
         };
