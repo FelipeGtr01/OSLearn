@@ -14,6 +14,11 @@ h2 {
     text-align: center; /* Centraliza o texto horizontalmente */
 }
 
+p {
+    background-color: rgba(216, 216, 216, 0.5);
+    padding: 10px;
+}
+
 div#tabelaUsuarios {
     margin-top: 30px;
     width: 100%;

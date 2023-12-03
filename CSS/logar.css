@@ -28,7 +28,6 @@ h1 {
 
 #formulario {
     width: 100%;
-    max-width: 400px; /* Limita a largura do formulário */
     padding: 30px 50px;
     box-shadow: 0 0 50px rgba(0, 0, 0, .3);
     display: flex;
@@ -75,14 +74,6 @@ button#btnCadastro {
     color: #FF0000; /* Cor quando o mouse está sobre o link */
 }
 
-/*
-#botaoSairContainer {
-    display: flex;
-    justify-content: center; Centralizar horizontalmente 
-    align-items: center; Centralizar verticalmente 
-}
-*/
-
 /* Ajustar isso aqui*/
 #textoCadastro{
     padding: 1%;
@@ -117,4 +108,14 @@ a:-webkit-any-link {
     outline: none;
     text-decoration: none;
     color: #FFFFFF;
+}
+
+.erro-message {
+    width: 100%; 
+    background-color: #FF0000; /* Fundo claro */
+    border: 1px solid #FFD2D2; /* Borda vermelha */
+    padding: 10px; /* Espaçamento interno */
+    border-radius: 5px; /* Cantos arredondados */
+    margin-bottom: 10px; /* Espaçamento inferior */
+    text-align: center;
 }

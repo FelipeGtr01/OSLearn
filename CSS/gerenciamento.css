@@ -1,0 +1,153 @@
+/* Estilização dos links */
+a:-webkit-any-link {
+    outline: none;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+/* Estilização para a página de gerenciamento */
+body {
+    font-family: Baskervville;
+    margin: 0;
+    padding: 0;
+    background-color: #5E42A6;
+    color: #FFFFFF;
+}
+
+/* Estilização para o menu */
+#menu {
+    width: 260px;
+    height: 100%;
+    background-color: #312450; /* Cor de fundo do menu */
+    color: #FFFFFF; /* Cor do texto do menu */
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#menu ul {
+    height: 100%;
+    list-style-type: none;
+    padding: 0;
+    text-align: right;
+    margin-top: 90%;
+    margin-right: 10px;
+}
+
+#menu li {
+    padding: 10px;
+    border-bottom: 1px solid #FFF;
+    margin-left: 10px;
+}
+
+#menu a:hover {
+    background-color: #404190;
+    color: #FFFFFF;
+}
+
+/* Estilização para o conteúdo */
+.conteudo {
+    text-align: center;
+    margin: auto;
+    margin-left: 260px; /* Ajuste para considerar a largura do menu */
+    padding: 20px;
+    color: #FFFFFF; /* Cor do texto da página de conteúdo */
+}
+
+.conteudo h1 {
+    text-align: center;
+    color: #FFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-size: 30px;
+    letter-spacing: 3px;
+}
+
+/* Estilo para a lista de opções */
+.conteudo ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+.conteudo li {
+    margin: 20px 0;
+}
+
+.conteudo a {
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+#sair {
+    color: #5E42A6;
+}
+
+/* Estilização para o conteúdo */
+.conteudo button {
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px auto; /* Centralização dos botões horizontalmente */
+    width: 200px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    color: #FFFFFF;
+    transition: background-color 0.3s ease; /* transição de cor */
+}
+
+/* Estilização para o botão "Voltar" */
+.conteudo a.menu-button {
+    background-color: #312450; /* Cor do botão "Voltar" */
+}
+
+/* Estilização para o conteúdo */
+.conteudo .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.conteudo #inserir {
+    background-color: #4CAF50; /* Cor verde para inserir */
+}
+
+/* Hover para o botão inserir */
+.conteudo #inserir:hover {
+    background-color: #45a049; /* Cor verde mais escura para o hover */
+}
+
+.conteudo #editar {
+    background-color: #FFD700; /* Cor amarela para editar */
+}
+
+/* Hover para o botão editar */
+.conteudo #editar:hover {
+    background-color: #ccaa00; /* Cor amarela mais escura para o hover */
+}
+
+.conteudo #excluir {
+    background-color: #FF0000; /* Cor vermelha para excluir */
+}
+
+/* Hover para o botão excluir */
+.conteudo #excluir:hover {
+    background-color: #cc0000; /* Cor vermelha mais escura para o hover */
+}
+
+/* Estilização para o botão "Voltar" */
+.conteudo a.menu-button {
+    background-color: #312450; /* Cor do botão "Voltar" */
+    transition: background-color 0.3s ease; /* Adicionando transição de cor */
+}
+
+/* Hover para o botão "Voltar" */
+.conteudo a.menu-button:hover {
+    background-color: #404070; /* Cor mais escura para hover */
+}

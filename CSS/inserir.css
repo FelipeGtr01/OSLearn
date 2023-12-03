@@ -25,10 +25,10 @@ a:-webkit-any-link {
 
 /* Estilização para o menu */
 #menu {
-    width: 230px;
+    width: 260px;
     height: 100%;
-    background-color: #312450;
-    color: #FFFFFF;
+    background-color: #312450; /* Cor de fundo do menu */
+    color: #FFFFFF; /* Cor do texto do menu */
     position: fixed;
     top: 0;
     left: 0;
@@ -39,7 +39,7 @@ a:-webkit-any-link {
     list-style-type: none;
     padding: 0;
     text-align: right;
-    margin-top: 83%;
+    margin-top: 90%;
     margin-right: 10px;
 }
 
@@ -49,7 +49,7 @@ a:-webkit-any-link {
     margin-left: 10px;
 }
 
-#menu a:hover{
+#menu a:hover {
     background-color: #404190;
     color: #FFFFFF;
 }

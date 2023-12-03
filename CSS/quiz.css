@@ -1,4 +1,4 @@
-/* estilo.css */
+/* quiz.css */
 body {
     display: flex;
     flex-direction: column;
@@ -24,26 +24,6 @@ h1 {
     font-size: 24px;
 }
 
-
-
-.botoes {
-    margin-top: 20px;
-}
-
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #0074b0;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #005182;
-}
-
 /* Adicione estilos para a barra de progresso */
 #progress-bar {
     width: 100%;
@@ -63,7 +43,7 @@ button:hover {
 
 #stop-button {
     position: fixed;
-    top: 5px;
+    top: 5%;
     right: 5px;
     padding: 10px;
     background-color: #f44336;
@@ -73,61 +53,89 @@ button:hover {
     cursor: pointer;
 }
 
-/* Estilos para o layout das perguntas 
-.pergunta-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.pergunta-texto {
-    flex: 1;
-    margin-right: 20px;
-}
-
-.pergunta-imagem {
-    flex: 1;
-    max-width: 300px;
-    margin-right: 20px;
-}
-
-.alternativas-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.alternativa {
-    margin-bottom: 10px;
-}
-*/
-#pergunta-container {
+/* Estilos para o layout das perguntas */
+#quiz-form {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    max-width: 800px;
-    margin: 0 auto;
+    height: 90vh; /* Altura de 90% da tela */
+}
+
+.pergunta-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%; /* Largura de 90% em relação ao body */
+    max-width: 800px; /* Máximo de 800px para não ultrapassar o limite */
+    margin: 20px auto;
     padding: 20px;
     border: 1px solid #ddd;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    background-color: #fff; /* Cor de fundo destacada */
+}
+
+.pergunta-container h1 {
+    text-align: center; /* Centraliza o texto da pergunta */
+}
+
+.pergunta-container img {
+    max-width: 100%;
+    margin-bottom: 20px;
+    display: block; /* Adiciona display block para centralizar a imagem */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #alternativas {
-    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Justifica as alternativas à esquerda */
     margin-top: 20px;
-}
-
-#alternativas img {
-    max-width: 300px;
-    margin-right: 20px;
 }
 
 .alternativa {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    margin: 10px;
+    margin: 10px 0;
+}
+
+.alternativa input {
+    margin-right: 10px;
+}
+
+.botoes {
+    margin-left: 8px;
+}
+
+button[type="submit"] {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #F2873A; /* Cor do botão Verificar Respostas */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px; /* Adiciona espaçamento entre os botões */
+}
+
+button[type="submit"]:hover {
+    background-color: #ec6d11;
+}
+
+button[type="button"] {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #0074b0;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px; /* Adiciona espaçamento entre os botões */
+}
+
+button[type="button"]:hover {
+    background-color: #005182;
 }

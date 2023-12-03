@@ -51,28 +51,29 @@
                 // Redirecione para a página de resultado com o parâmetro do módulo
                 $modulo_atual = isset($_GET['modulo']) ? $_GET['modulo'] : 1;
                 header("location: resultado.php?modulo=$modulo_atual");
+                // Armazenar as perguntas na sessão
+                $_SESSION['perguntas'] = $perguntas;
+                header("location: resultado.php?modulo=$modulo_atual");
             }
         }
 
-        if(isset($data) && is_array($data)){
-
-            echo "<form method='post'>";
-
+        if (isset($data) && is_array($data)) {
+            echo "<form method='post' id='quiz-form'>";
+        
             foreach ($data as $index => $pergunta) {
-                echo "<div id='pergunta-container'>";
+                $resposta_salva = isset($_SESSION["respostas_modulo_$modulo_atual"][$index]) ? $_SESSION["respostas_modulo_$modulo_atual"][$index] : '';
+        
+                echo "<div class='pergunta-container' id='pergunta-$index' style='display: " . ($index === 0 ? 'block' : 'none') . ";'>";
                 echo "<h1>{$pergunta['pergunta']}</h1>";
-                
+        
                 // Exibição da imagem relacionada à pergunta, se houver.
                 $imagens = $pergunta['imagem'];
                 if (!empty($imagens)) {
                     echo "<img src='data:image/jpeg;base64," . $imagens . "' alt='Imagem da pergunta' style='max-width: 200px;' />";
                 }
-
-                // Exibição da resposta salva pelo usuário, se houver.
-                $resposta_salva = isset($_SESSION["respostas_modulo_$modulo_atual"][$index]) ? $_SESSION["respostas_modulo_$modulo_atual"][$index] : '';
-
+        
                 // Exibição das alternativas com a opção marcada.
-                echo "<div id='alternativas'>";
+                echo "<div class='alternativas'>";
                 foreach ($pergunta['alternativas'] as $j => $alternativa) {
                     echo "<div class='alternativa'>";
                     $checked = $j == $resposta_salva ? 'checked' : '';
@@ -80,14 +81,18 @@
                     echo "</div>";
                 }
                 echo "</div>"; // Fechar div 'alternativas'
-                
+        
                 echo "</div>"; // Fechar div 'pergunta-container'
             }
-
-            // Adicione um botão para verificar as respostas.
+        
+            echo "<div class='botoes'>";
+            echo "<button type='button' onclick='anteriorPergunta()'>Anterior</button>";
+            echo "<button type='button' onclick='proximaPergunta()'>Próxima</button>";
             echo "<button type='submit' name='verificar'>Verificar Respostas</button>";
+            echo "</div>"; // Fechar div 'botoes'
+        
             echo "</form>";
-        } else{
+        } else {
             echo "Erro!";
         }
     }
@@ -96,22 +101,25 @@
     <script>
         let totalPerguntas = <?php echo count($data); ?>;
         let progressoAtual = 0;
+        let respostaAlterada = false; // Adicionado para rastrear se a resposta foi alterada
 
         document.addEventListener('DOMContentLoaded', function () {
             let opcoesResposta = document.querySelectorAll('input[type="radio"]');
 
             opcoesResposta.forEach(function (opcao) {
                 opcao.addEventListener('change', function () {
-                    progressoAtual++;
-                    updateProgressBar();
+                    respostaAlterada = true; // Atualiza o status da resposta
                 });
             });
         });
 
         function updateProgressBar() {
-            let percentualProgresso = (progressoAtual / totalPerguntas) * 100;
-            document.getElementById('progress-indicator').style.width = percentualProgresso + '%';
-            updateProgressBarColor(percentualProgresso);
+            if (respostaAlterada) {
+                let percentualProgresso = (progressoAtual / totalPerguntas) * 100;
+                document.getElementById('progress-indicator').style.width = percentualProgresso + '%';
+                updateProgressBarColor(percentualProgresso);
+                respostaAlterada = false; // Reinicia o status da resposta
+            }
         }
 
         function updateProgressBarColor(percentualProgresso) {
@@ -131,6 +139,30 @@
         function confirmStop() {
             if (confirm("Tem certeza de que deseja parar? Se você parar, o progresso será perdido.")) {
                 window.location.href = '../modulos/trilha.php';
+            }
+        }
+
+        function anteriorPergunta() {
+            let perguntas = document.querySelectorAll('.pergunta-container');
+            let indexAtual = Array.from(perguntas).findIndex(pergunta => pergunta.style.display === 'block');
+
+            if (indexAtual > 0) {
+                perguntas[indexAtual].style.display = 'none';
+                perguntas[indexAtual - 1].style.display = 'block';
+                progressoAtual = indexAtual - 1;
+                updateProgressBar();
+            }
+        }
+
+        function proximaPergunta() {
+            let perguntas = document.querySelectorAll('.pergunta-container');
+            let indexAtual = Array.from(perguntas).findIndex(pergunta => pergunta.style.display === 'block');
+
+            if (indexAtual < perguntas.length - 1) {
+                perguntas[indexAtual].style.display = 'none';
+                perguntas[indexAtual + 1].style.display = 'block';
+                progressoAtual = indexAtual + 1;
+                updateProgressBar();
             }
         }
     </script>

@@ -15,7 +15,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/trilha.css"> 
-    <title>Painel do Usuário</title>
+    <title>Trilha de Estudos</title>
 </head>
 <body>
     <div id="menu">

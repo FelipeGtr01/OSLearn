@@ -30,7 +30,7 @@ body {
     list-style-type: none;
     padding: 0;
     text-align: right;
-    margin-top: 100%;
+    margin-top: 83%;
     margin-right: 10px;
 }
 
@@ -71,8 +71,6 @@ body {
 #sair {
     color: #5E42A6;
 }
-
-/* Seu CSS existente */
 
 /* Estilização para a div de boas-vindas */
 #boas-vindas {

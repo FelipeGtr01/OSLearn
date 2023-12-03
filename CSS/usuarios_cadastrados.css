@@ -54,7 +54,7 @@ div#tabelaUsuarios table tbody tr:hover {
 }
 
 div#tabelaUsuarios table tbody tr.usuario-logado {
-    background-color: #5E42A6; /* Cor de destaque para o usuário logado */
+    background-color: rgba(216, 216, 216, 0.5); /* Cor de destaque para o usuário logado */    
     color: #fff; /* Cor do texto para o usuário logado */
 }
 

@@ -29,26 +29,37 @@ $perguntas = $query->fetchAll(PDO::FETCH_ASSOC);
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../CSS/lista.css">k
     <title>Lista de Perguntas Ativas - OSLearn</title>
 </head>
 <body>
-    <h1>Perguntas Ativas</h1>
-    <ul>
-        <?php foreach ($perguntas as $pergunta): ?>
-            <li>
-                <strong>ID: <?php echo $pergunta['id']; ?></strong><br>
-                Pergunta: <?php echo $pergunta['pergunta']; ?><br>
-                Data de Publicação: <?php echo $pergunta['data_publicacao']; ?><br>
-                Módulo: <?php echo $pergunta['modulo']; ?><br>
-                <?php if (!empty($pergunta['imagem'])): ?>
-                    <img src="data:image/jpeg;base64,<?php echo base64_encode($pergunta['imagem']); ?>" alt="Imagem da pergunta" style="max-width: 200px;"><br>
-                <?php else: ?>
-                    <em>Sem imagem</em><br>
-                <?php endif; ?>
-                <a href="edicaoPerguntas.php?id=<?php echo $pergunta['id']; ?>">Atualizar</a>
-            </li>
-            <br>
-        <?php endforeach; ?>
-    </ul>
+    <div id="menu">
+        <ul>
+            <li><a href="admin_dashboard.php">OSLearn (ADM)💻</a></li>
+            <li><a href="usuarios_cadastrados.php">LISTA DE USUÁRIOS 📄</a></li>
+            <li><a href="gerenciar.php">GERENCIAR MÓDULOS 🔩</a></li>
+            <li><a href="../logout.php" id="sair">SAIR 🔚</a></li> 
+        </ul>
+    </div>
+    <div class="conteudo">
+        <h1>Perguntas Ativas</h1>
+        <ul>
+            <?php foreach ($perguntas as $pergunta): ?>
+                <li>
+                    <strong>ID: <?php echo $pergunta['id']; ?></strong><br>
+                    Pergunta: <?php echo $pergunta['pergunta']; ?><br>
+                    Data de Publicação: <?php echo $pergunta['data_publicacao']; ?><br>
+                    Módulo: <?php echo $pergunta['modulo']; ?><br>
+                    <?php if (!empty($pergunta['imagem'])): ?>
+                        <img src="data:image/jpeg;base64,<?php echo base64_encode($pergunta['imagem']); ?>" alt="Imagem da pergunta" style="max-width: 200px;"><br>
+                    <?php else: ?>
+                        <em>Sem imagem</em><br>
+                    <?php endif; ?>
+                    <a href="edicaoPerguntas.php?id=<?php echo $pergunta['id']; ?>">Atualizar</a>
+                </li>
+                <br>
+            <?php endforeach; ?>
+        </ul>
+    </div>
 </body>
 </html>

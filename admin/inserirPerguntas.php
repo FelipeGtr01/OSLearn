@@ -44,7 +44,7 @@ if (!isset($_SESSION['usuario']['id'])) {
 
             if ($query->execute()) {
                 // A atualização foi bem-sucedida, redirecione ou exiba uma mensagem de sucesso
-                header('Location: admin_dashboard.php');
+                header('Location: gerenciamento_alternativas.php');
                 exit();
             } else {
                 // Se por acaso a atualização falhar, será exiba uma mensagem de erro
@@ -61,10 +61,18 @@ if (!isset($_SESSION['usuario']['id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/conta.css"> 
+    <link rel="stylesheet" href="../CSS/inserir.css"> 
     <title>Conta - OSLearn</title>
 </head>
 <body>
+    <div id="menu">
+        <ul>
+            <li><a href="admin_dashboard.php">OSLearn (ADM)💻</a></li>
+            <li><a href="usuarios_cadastrados.php">LISTA DE USUÁRIOS 📄</a></li>
+            <li><a href="gerenciar.php">GERENCIAR MÓDULOS 🔩</a></li>
+            <li><a href="../logout.php" id="sair">SAIR 🔚</a></li> 
+        </ul>
+    </div>
     <div id="content-container">
         <div id="conteudo">
             <br><br>

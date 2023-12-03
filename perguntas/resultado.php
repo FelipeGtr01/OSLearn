@@ -56,14 +56,47 @@
             }
         }
     } else {
-        echo "Você não respondeu a nenhuma pergunta.";
+        echo "<p class='erro'>Você não respondeu a nenhuma pergunta.</p>";
     }
     
-
+    echo "<link rel='stylesheet' type='text/css' href='../CSS/resultado.css'>";
+    echo '<a href="../modulos/trilha.php" class="botao">Finalizar</a>';
     // Exibição da pontuação na página
+    echo "<div class='container'>";
     echo "<h1>Sua pontuação no módulo $modulo_atual:</h1>";
-    echo "<p>Pontuação Correta: $pontuacao_correta</p>";
-    echo "<p>Pontuação Incorreta: $pontuacao_incorreta</p>";
+    echo "<p class='resposta-correta'>Pontuação Correta: $pontuacao_correta</p>";
+    echo "<p class='erro'>Pontuação Incorreta: $pontuacao_incorreta</p>";
+
+    // Obtendo as perguntas que o usuário errou
+    // Verificar se as perguntas estão na sessão
+    if (isset($_SESSION['perguntas'])) {
+    $perguntas = $_SESSION['perguntas'];
+
+    // Exibir as perguntas e respostas
+    foreach ($respostas_por_modulo[$modulo_atual]['respostas_usuario'] as $index => $resposta) {
+        if (isset($respostas_por_modulo[$modulo_atual]['respostas_corretas'][$index])) {
+            $resposta_correta = $respostas_por_modulo[$modulo_atual]['respostas_corretas'][$index];
+            
+            if ($resposta != $resposta_correta) {
+
+                // Exibindo a pergunta
+                echo "<h1>Você errou a pergunta: {$perguntas[$index]['pergunta']}</h1>";
+                
+                // Obtendo o texto das alternativas
+                $alternativas_pergunta = $perguntas[$index]['alternativas'];
+                
+                // Exibindo a alternativa escolhida pelo usuário
+                echo "<p class='erro'>Sua resposta: " . $alternativas_pergunta[$resposta]['texto'] . "</p>";
+                
+                // Exibindo a resposta correta
+                echo "<p class='resposta-correta'>Resposta correta: " . $alternativas_pergunta[$resposta_correta]['texto'] . "</p>";
+            }
+        }
+    }
+
+} else {
+    echo "<p class='erro'>Perguntas não encontradas na sessão.</p>";
+}
 
     $idUsuario = $_SESSION['usuario']['id'];
 
@@ -99,16 +132,19 @@
     if (!usuarioConcluiuModulo($modulo_atual)) {
         // Se o usuário não concluiu o módulo, atualize a pontuação
         if ($stmt->execute()) {
-            echo "<p>Pontuação atualizada no banco de dados com sucesso.</p>";
+            echo "<h2><p class='resposta-atualizacao'>Pontuação atualizada com sucesso.</p>
+            </h2>";
             
             // Marcação do módulo como concluído na variável de sessão
             marcarModuloComoConcluido($modulo_atual);
         } else {
-            echo "<p>Erro ao atualizar a pontuação no banco de dados.</p>";
+            echo "<h2 class='erro'>Erro ao atualizar a pontuação no banco de dados.</h2>";
         }
     } else {
-        echo "<p>Você já concluiu este módulo, a pontuação não será acumulada novamente.</p>";
+        echo "<h2 class='informacao'>Você já concluiu este módulo, a pontuação não será acumulada novamente.</h2>";
     }
+    echo "</div>";
+
 
     function usuarioConcluiuModulo($modulo_atual) {
         // Verificação se o módulo atual está registrado na variável de sessão
@@ -129,5 +165,4 @@
 
     // Limpeza das respostas da sessão, se desejar
     unset($_SESSION['respostas']);
-    // Erro!!! acumular a pontuação só uma vez de cada modulo, após isso não acumular a pontuação no banco!!! 
 ?>

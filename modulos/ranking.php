@@ -30,7 +30,7 @@
 <!-- ranking.php - Exibição da lógica -->
 <html>
 <head>
-    <title>Ranking - <?php echo $nome; ?></title>
+    <title>Ranking 🏆</title>
     <link rel="stylesheet" href="../CSS/ranking.css">
 </head>
 <body>

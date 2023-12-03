@@ -29,21 +29,32 @@ $alternativas = $query->fetchAll(PDO::FETCH_ASSOC);
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../CSS/lista.css">
     <title>Lista de Alternativas - OSLearn</title>
 </head>
 <body>
-    <h1>Alternativas</h1>
-    <ul>
-        <?php foreach ($alternativas as $alternativa): ?>
-            <li>
-                <strong>ID: <?php echo $alternativa['id']; ?></strong><br>
-                ID da Pergunta: <?php echo $alternativa['id_pergunta']; ?><br>
-                Alternativa: <?php echo $alternativa['texto_alternativa']; ?><br>
-                Correta ou Incorreta: <?php echo $alternativa['correta']; ?><br>
-                <a href="edicaoAlternativas.php?id=<?php echo $alternativa['id']; ?>">Atualizar</a>
-            </li>
-            <br>
-        <?php endforeach; ?>
-    </ul>
+    <div id="menu">
+        <ul>
+            <li><a href="admin_dashboard.php">OSLearn (ADM)💻</a></li>
+            <li><a href="usuarios_cadastrados.php">LISTA DE USUÁRIOS 📄</a></li>
+            <li><a href="gerenciar.php">GERENCIAR MÓDULOS 🔩</a></li>
+            <li><a href="../logout.php" id="sair">SAIR 🔚</a></li> 
+        </ul>
+    </div>
+    <div class="conteudo">
+        <h1>Alternativas</h1>
+        <ul>
+            <?php foreach ($alternativas as $alternativa): ?>
+                <li>
+                    <strong>ID: <?php echo $alternativa['id']; ?></strong><br>
+                    ID da Pergunta: <?php echo $alternativa['id_pergunta']; ?><br>
+                    Alternativa: <?php echo $alternativa['texto_alternativa']; ?><br>
+                    Correta ou Incorreta: <?php echo $alternativa['correta']; ?><br>
+                    <a href="edicaoAlternativas.php?id=<?php echo $alternativa['id']; ?>">Atualizar</a>
+                </li>
+                <br>
+            <?php endforeach; ?>
+        </ul>
+    </div>
 </body>
 </html>
