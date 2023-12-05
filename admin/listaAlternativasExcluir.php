@@ -29,21 +29,59 @@ $alternativas = $query->fetchAll(PDO::FETCH_ASSOC);
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../CSS/gerenciamento.css">
     <title>Lista de Alternativas - OSLearn</title>
+    <script>
+        function confirmarExclusao(id) {
+            var confirmacao = confirm('Tem certeza de que deseja excluir esta alternativa?');
+            if(confirmacao) {
+                window.location.href = 'excluirAlternativas.php?id=' + id;
+            } else {
+                // Se o usuário cancelar, não faz nada
+            }
+        }
+    </script>
 </head>
 <body>
-    <h1>Alternativas</h1>
-    <ul>
-        <?php foreach ($alternativas as $alternativa): ?>
-            <li>
-                <strong>ID: <?php echo $alternativa['id']; ?></strong><br>
-                ID da Pergunta: <?php echo $alternativa['id_pergunta']; ?><br>
-                Alternativa: <?php echo $alternativa['texto_alternativa']; ?><br>
-                Correta ou Incorreta: <?php echo $alternativa['correta']; ?><br>
-                <a href="excluirAlternativas.php?id=<?php echo $alternativa['id']; ?>">Excluir</a>
-            </li>
-            <br>
-        <?php endforeach; ?>
-    </ul>
+    <div id="menu">
+        <ul>
+            <li><a href="admin_dashboard.php">OSLearn (ADM)💻</a></li>
+            <li><a href="usuarios_cadastrados.php">LISTA DE USUÁRIOS 📄</a></li>
+            <li><a href="gerenciar.php">GERENCIAR MÓDULOS 🔩</a></li>
+            <li><a href="../logout.php" id="sair">SAIR 🔚</a></li> 
+        </ul>
+    </div>
+    <div class="conteudo">
+        <div class="header">
+            <?php
+                echo '<a href="../admin/gerenciamento_alternativas.php" class="menu-button">Voltar</a>';
+            ?>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="5"><h1>Excluir Alternativas</h1></th>
+                </tr>
+                <tr>
+                    <th>ID</th>
+                    <th>ID da Pergunta</th>
+                    <th>Alternativa</th>
+                    <th>Correta ou Incorreta</th>
+                    <th>Excluir</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($alternativas as $alternativa): ?>
+                    <tr>
+                        <td><strong><?php echo $alternativa['id']; ?></strong></td>
+                        <td><?php echo $alternativa['id_pergunta']; ?></td>
+                        <td><?php echo $alternativa['texto_alternativa']; ?></td>
+                        <td><?php echo $alternativa['correta']; ?></td>
+                        <td><div id="botaoexcluir"><a href="#" onclick="confirmarExclusao(<?php echo $alternativa['id']; ?>)">Excluir</a></div></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

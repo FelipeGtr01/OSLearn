@@ -29,7 +29,7 @@ $perguntas = $query->fetchAll(PDO::FETCH_ASSOC);
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../CSS/lista.css">k
+    <link rel="stylesheet" href="../CSS/lista.css">
     <title>Lista de Perguntas Ativas - OSLearn</title>
 </head>
 <body>
@@ -42,24 +42,44 @@ $perguntas = $query->fetchAll(PDO::FETCH_ASSOC);
         </ul>
     </div>
     <div class="conteudo">
-        <h1>Perguntas Ativas</h1>
-        <ul>
-            <?php foreach ($perguntas as $pergunta): ?>
-                <li>
-                    <strong>ID: <?php echo $pergunta['id']; ?></strong><br>
-                    Pergunta: <?php echo $pergunta['pergunta']; ?><br>
-                    Data de Publicação: <?php echo $pergunta['data_publicacao']; ?><br>
-                    Módulo: <?php echo $pergunta['modulo']; ?><br>
-                    <?php if (!empty($pergunta['imagem'])): ?>
-                        <img src="data:image/jpeg;base64,<?php echo base64_encode($pergunta['imagem']); ?>" alt="Imagem da pergunta" style="max-width: 200px;"><br>
-                    <?php else: ?>
-                        <em>Sem imagem</em><br>
-                    <?php endif; ?>
-                    <a href="edicaoPerguntas.php?id=<?php echo $pergunta['id']; ?>">Atualizar</a>
-                </li>
-                <br>
-            <?php endforeach; ?>
-        </ul>
+        <div class="header">
+            <?php
+                echo '<a href="../admin/gerenciamento_alternativas.php" class="menu-button">Voltar</a>';
+            ?>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="6"><h1>Perguntas Ativas</h1></th>
+                </tr>
+                <tr>
+                    <th>ID</th>
+                    <th>Pergunta</th>
+                    <th>Data de Publicação</th>
+                    <th>Módulo</th>
+                    <th>Imagem</th>
+                    <th>Atualizar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($perguntas as $pergunta): ?>
+                    <tr>
+                        <td><strong><?php echo $pergunta['id']; ?></strong></td>
+                        <td><?php echo $pergunta['pergunta']; ?></td>
+                        <td><?php echo $pergunta['data_publicacao']; ?></td>
+                        <td><?php echo $pergunta['modulo']; ?></td>
+                        <td>
+                            <?php if (!empty($pergunta['imagem'])): ?>
+                                <img src="data:image/jpeg;base64,<?php echo base64_encode($pergunta['imagem']); ?>" alt="Imagem da pergunta" style="max-width: 100px;">
+                            <?php else: ?>
+                                <em>Sem imagem</em>
+                            <?php endif; ?>
+                        </td>
+                        <td><div id="botaoeditar"><a href="edicaoPerguntas.php?id=<?php echo $pergunta['id']; ?>">Atualizar</a></div></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
     </div>
 </body>
 </html>

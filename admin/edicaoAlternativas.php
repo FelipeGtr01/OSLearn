@@ -50,32 +50,51 @@ if (isset($_GET['id'])) {
             }
         }
         ?>
-        <!DOCTYPE html>
-        <html lang="pt-BR">
-        <head>
-            <meta charset="UTF-8">
-            <title>Editar Alternativa - OSLearn</title>
-        </head>
-        <body>
-            <h1>Editar Alternativa</h1>
-            <form action="" method="post" enctype="multipart/form-data">
-            <form action="" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="idAlternativa" value="<?php echo $alternativa['id']; ?>">
-                
-                <label>ID da Pergunta:</label><br>
-                <input type="number" name="idPergunta" value="<?php echo $alternativa['id_pergunta']; ?>"><br><br>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../CSS/inserir.css">
+    <title>Editar Alternativa - OSLearn</title>
+</head>
+    <body>
+        <div id="menu">
+            <ul>
+                <li><a href="admin_dashboard.php">OSLearn (ADM)💻</a></li>
+                <li><a href="usuarios_cadastrados.php">LISTA DE USUÁRIOS 📄</a></li>
+                <li><a href="gerenciar.php">GERENCIAR MÓDULOS 🔩</a></li>
+                <li><a href="../logout.php" id="sair">SAIR 🔚</a></li> 
+            </ul>
+        </div>
 
-                <label>Alternativa:</label><br>
-                <input type="text" name="novaAlternativa" value="<?php echo $alternativa['texto_alternativa']; ?>"><br><br>
-
-                <label>Correta ou Incorreta:</label><br>
-                <input type="number" name="correta" value="<?php echo $alternativa['correta']; ?>"><br><br>
-
-                <input type="submit" value="Atualizar Pergunta" name="atualizar">
-            </form>
-            </form>
-        </body>
-        </html>
+        <div id="content-container">
+                <div id="conteudo">
+                    <h1>Editar Alternativa</h1>
+                    <div class="informacoes">
+                        <form action="" method="post" enctype="multipart/form-data">
+                            <table>
+                                <tr>
+                                    <td>ID da Pergunta:</td>
+                                    <td><input type="number" name="idPergunta" value="<?php echo $alternativa['id_pergunta']; ?>"></td>
+                                </tr>
+                                <tr>
+                                    <td>Alternativa:</td>
+                                    <td><input type="text" name="novaAlternativa" value="<?php echo $alternativa['texto_alternativa']; ?>"></td>
+                                </tr>
+                                <tr>
+                                    <td>Correta ou Incorreta:</td>
+                                    <td><input type="number" name="correta" value="<?php echo $alternativa['correta']; ?>"></td>
+                                </tr>
+                            </table>
+                            <br>
+                            <input type="hidden" name="idAlternativa" value="<?php echo $alternativa['id']; ?>">
+                            <input type="submit" value="Atualizar Alternativa" name="atualizar">
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </body>
+</html>
         <?php
     } else {
         echo "Alternativa não encontrada.";

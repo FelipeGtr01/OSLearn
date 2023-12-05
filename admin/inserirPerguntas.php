@@ -15,6 +15,11 @@ if (!isset($_SESSION['usuario']['id'])) {
         if (isset($_POST['inserir'])) {
             $idUsuario = $_SESSION["usuario"]["id"];
 
+            if (empty($_FILES["imagem"]["tmp_name"])) {
+                header("Location: inserirPerguntas.php?erro=credenciais_incorretas");
+                exit();
+            }
+
             // Recuperação dos dados do formulário
             $novaPergunta = $_POST['nova_pergunta'];
             $ativo = $_POST['ativo'];
@@ -87,6 +92,14 @@ if (!isset($_SESSION['usuario']['id'])) {
                     <label>ATIVO:</label>
                     <input type="text" name="ativo" placeholder="ativo" ><br><br>
                     <br><br>
+                    <?php
+                    // Verifica se há um parâmetro de erro na URL
+                    if (isset($_GET['erro']) && $_GET['erro'] === 'credenciais_incorretas') {
+                        echo '<div class="erro-message">'; //mensagem de erro
+                        echo "Não é possível inserir uma pergunta sem uma imagem!";
+                        echo '</div>';  
+                    }
+                    ?>
                     <label for="imagem">SELECIONE UMA IMAGEM:</label>
                     <input type="file" id="imagem" name="imagem"><br><br>
                     <br><br>

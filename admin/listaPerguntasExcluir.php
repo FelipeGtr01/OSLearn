@@ -29,26 +29,67 @@ $perguntas = $query->fetchAll(PDO::FETCH_ASSOC);
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../CSS/gerenciamento.css">
     <title>Lista de Perguntas Ativas - OSLearn</title>
+    <script>
+        function confirmarExclusao(id) {
+            var confirmacao = confirm('Tem certeza de que deseja excluir esta pergunta?');
+            if(confirmacao) {
+                window.location.href = 'excluirPerguntas.php?id=' + id;
+            } else {
+                // Se o usuário cancelar, não faz nada
+            }
+        }
+    </script>
 </head>
 <body>
-    <h1>Perguntas Ativas</h1>
-    <ul>
-        <?php foreach ($perguntas as $pergunta): ?>
-            <li>
-                <strong>ID: <?php echo $pergunta['id']; ?></strong><br>
-                Pergunta: <?php echo $pergunta['pergunta']; ?><br>
-                Data de Publicação: <?php echo $pergunta['data_publicacao']; ?><br>
-                Módulo: <?php echo $pergunta['modulo']; ?><br>
-                <?php if (!empty($pergunta['imagem'])): ?>
-                    <img src="data:image/jpeg;base64,<?php echo base64_encode($pergunta['imagem']); ?>" alt="Imagem da pergunta" style="max-width: 200px;"><br>
-                <?php else: ?>
-                    <em>Sem imagem</em><br>
-                <?php endif; ?>
-                <a href="excluirPerguntas.php?id=<?php echo $pergunta['id']; ?>">Excluir</a>
-            </li>
-            <br>
-        <?php endforeach; ?>
-    </ul>
+    <div id="menu">
+        <ul>
+            <li><a href="admin_dashboard.php">OSLearn (ADM)💻</a></li>
+            <li><a href="usuarios_cadastrados.php">LISTA DE USUÁRIOS 📄</a></li>
+            <li><a href="gerenciar.php">GERENCIAR MÓDULOS 🔩</a></li>
+            <li><a href="../logout.php" id="sair">SAIR 🔚</a></li> 
+        </ul>
+    </div>
+    <div class="conteudo">
+        <div class="header">
+            <?php
+                echo '<a href="../admin/gerenciamento_perguntas.php" class="menu-button">Voltar</a>';
+            ?>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="6"><h1>Perguntas Ativas</h1></th>
+                </tr>
+                <tr>
+                    <th>ID</th>
+                    <th>Pergunta</th>
+                    <th>Data de Publicação</th>
+                    <th>Módulo</th>
+                    <th>Imagem</th>
+                    <th>Excluir</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($perguntas as $pergunta): ?>
+                    <tr>
+                        <td><strong><?php echo $pergunta['id']; ?></strong></td>
+                        <td><?php echo $pergunta['pergunta']; ?></td>
+                        <td><?php echo $pergunta['data_publicacao']; ?></td>
+                        <td><?php echo $pergunta['modulo']; ?></td>
+                        <td>
+                            <?php if (!empty($pergunta['imagem'])): ?>
+                                <img src="data:image/jpeg;base64,<?php echo base64_encode($pergunta['imagem']); ?>" alt="Imagem da pergunta" style="max-width: 100px;">
+                            <?php else: ?>
+                                <em>Sem imagem</em>
+                            <?php endif; ?>
+                        </td>
+                        <td><div id="botaoexcluir"><a href="#" onclick="confirmarExclusao(<?php echo $pergunta['id']; ?>)">Excluir</a></div></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

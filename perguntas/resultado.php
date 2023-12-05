@@ -12,27 +12,50 @@
     // Recuperação das respostas do usuário do módulo atual da sessão
     $respostas = isset($_SESSION["respostas_modulo_" . $modulo_atual]) ? $_SESSION["respostas_modulo_" . $modulo_atual] : [];
 
-
     $respostas_por_modulo = [
         1 => [
             'respostas_corretas' => [
-                //a resposta correta corresponde a posição que a alternativa correta aparece... 
-                0 => 1, // Resposta correta para a pergunta 0 no módulo 1
-                1 => 1,
-                2 => 0
+                //a resposta correta corresponde a posição que a alternativa correta aparece...
+                0 => 2, // Resposta correta para a pergunta 0 no módulo 1
+                1 => 0,
+                2 => 1,
+                3 => 0,
+                4 => 0,
+                5 => 0,
+                6 => 0,
+                7 => 0,
+                8 => 0,
+                9 => 0,
             ],
             'respostas_usuario' => isset($_SESSION["respostas_modulo_1"]) ? $_SESSION["respostas_modulo_1"] : [],
         ],
         2 => [
             'respostas_corretas' => [
-                0 => 1, // Resposta correta para a pergunta 0 no módulo 2
+                0 => 0, // Resposta correta para a pergunta 0 no módulo 2
+                1 => 1,
+                2 => 0,
+                3 => 1,
+                4 => 2,
+                5 => 1,
+                6 => 1,
+                7 => 0,
+                8 => 0,
+                9 => 0,
             ],
             'respostas_usuario' => isset($_SESSION["respostas_modulo_2"]) ? $_SESSION["respostas_modulo_2"] : [],
         ],
         3 => [
             'respostas_corretas' => [
                 0 => 1, // Resposta correta para a pergunta 0 no módulo 3
-                1 => 0, // Resposta correta para a pergunta 1 no módulo 3
+                1 => 0,
+                2 => 0,
+                3 => 0,
+                4 => 1,
+                5 => 0,
+                6 => 0,
+                7 => 0,
+                8 => 1,
+                9 => 0,
             ],
             'respostas_usuario' => isset($_SESSION["respostas_modulo_3"]) ? $_SESSION["respostas_modulo_3"] : [],
         ],
@@ -60,7 +83,6 @@
     }
     
     echo "<link rel='stylesheet' type='text/css' href='../CSS/resultado.css'>";
-    echo '<a href="../modulos/trilha.php" class="botao">Finalizar</a>';
     // Exibição da pontuação na página
     echo "<div class='container'>";
     echo "<h1>Sua pontuação no módulo $modulo_atual:</h1>";
@@ -93,10 +115,11 @@
             }
         }
     }
-
 } else {
     echo "<p class='erro'>Perguntas não encontradas na sessão.</p>";
 }
+    
+echo '<a href="../modulos/trilha.php" class="botao">Finalizar</a>';
 
     $idUsuario = $_SESSION['usuario']['id'];
 

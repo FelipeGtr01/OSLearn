@@ -30,7 +30,8 @@
             <?php
                 echo '<a href="../admin/gerenciar.php" class="menu-button">Voltar</a>';
             ?>
-            <h2>Painel de administração das ALTERNATIVAS</h2>
+            <h2>Painel de administração</h2>
+            <h2>ALTERNATIVAS</h2>
         </div>
         <div class="button-container">
             </div>

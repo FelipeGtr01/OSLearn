@@ -42,19 +42,37 @@ $alternativas = $query->fetchAll(PDO::FETCH_ASSOC);
         </ul>
     </div>
     <div class="conteudo">
-        <h1>Alternativas</h1>
-        <ul>
-            <?php foreach ($alternativas as $alternativa): ?>
-                <li>
-                    <strong>ID: <?php echo $alternativa['id']; ?></strong><br>
-                    ID da Pergunta: <?php echo $alternativa['id_pergunta']; ?><br>
-                    Alternativa: <?php echo $alternativa['texto_alternativa']; ?><br>
-                    Correta ou Incorreta: <?php echo $alternativa['correta']; ?><br>
-                    <a href="edicaoAlternativas.php?id=<?php echo $alternativa['id']; ?>">Atualizar</a>
-                </li>
-                <br>
-            <?php endforeach; ?>
-        </ul>
+        <div class="header">
+            <?php
+                echo '<a href="../admin/gerenciamento_alternativas.php" class="menu-button">Voltar</a>';
+            ?>
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="5"><h1>Editar Alternativas</h1></th>
+                </tr>
+                <tr>
+                    <th>ID</th>
+                    <th>ID da Pergunta</th>
+                    <th>Alternativa</th>
+                    <th>Correta ou Incorreta</th>
+                    <th>Atualizar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($alternativas as $alternativa): ?>
+                    <tr>
+                        <td><strong><?php echo $alternativa['id']; ?></strong></td>
+                        <td><?php echo $alternativa['id_pergunta']; ?></td>
+                        <td><?php echo $alternativa['texto_alternativa']; ?></td>
+                        <td><?php echo $alternativa['correta']; ?></td>
+                        <td><div id="botaoeditar"><a href="edicaoAlternativas.php?id=<?php echo $alternativa['id']; ?>">Atualizar</a></div></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
     </div>
 </body>
 </html>

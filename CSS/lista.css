@@ -63,29 +63,56 @@ body {
 }
 
 /* Estilo para a lista de opções */
-.conteudo ul {
-    list-style-type: none;
-    padding: 0;
+/* Estilização para a tabela */
+.conteudo table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.conteudo th, .conteudo td {
+    border: 1px solid #FFFFFF;
+    padding: 10px;
     text-align: center;
 }
 
-.conteudo li {
-    margin: 20px 0;
+.conteudo th {
+    background-color: #312450;
+    color: #FFFFFF;
 }
 
 .conteudo a {
     display: block;
     padding: 10px;
     border-radius: 5px;
-    background-color: #312450;
     color: #FFFFFF;
     text-decoration: none;
 }
 
-.conteudo a:hover {
-    background-color: #404190;
-}
-
 #sair {
     color: #5E42A6;
+}
+
+.conteudo #botaoeditar{
+    background-color: #FFD700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.conteudo #botaoeditar:hover{
+    background-color: #ccaa00;
+    cursor: pointer;
+}
+
+/* Estilização para o botão "Voltar" */
+.conteudo a.menu-button {
+    background-color: #312450; /* Cor do botão "Voltar" */
+    transition: background-color 0.3s ease; /* Adicionando transição de cor */
+}
+
+/* Hover para o botão "Voltar" */
+.conteudo a.menu-button:hover {
+    background-color: #404070; /* Cor mais escura para hover */
 }

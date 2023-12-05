@@ -35,7 +35,8 @@
         <?php
             echo '<a href="../admin/gerenciar.php" class="menu-button">Voltar</a>';
         ?>
-        <h2>Painel de administração das PERGUNTAS</h2>
+        <h2>Painel de administração</h2>
+        <h2>Perguntas</h2>
     </div>
         <button id="inserir" class="green-button"><a href="inserirPerguntas.php">Inserir</a></button>
         <button id="editar" class="yellow-button"><a href="listaPerguntas.php">Editar</a></button>
